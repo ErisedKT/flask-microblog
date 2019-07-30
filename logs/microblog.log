@@ -1,4 +1,4 @@
-2019-07-30 07:59:05,559 ERROR: Exception on /index [GET] [in /home/sanya/microblog/venv/lib/python3.6/site-packages/flask/app.py:1891]
+2019-07-30 14:08:17,239 ERROR: Exception on /register [GET] [in /home/sanya/microblog/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/sanya/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,10 +12,8 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/sanya/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/sanya/microblog/app/routes.py", line 29, in index
-    return render_template('index.html', title='Home', posts=posts, form=form)
+  File "/home/sanya/microblog/app/routes.py", line 92, in register
+    return render_template('register.html', title='Register', form=form)
   File "/home/sanya/microblog/venv/lib/python3.6/site-packages/flask/templating.py", line 140, in render_template
     ctx.app,
   File "/home/sanya/microblog/venv/lib/python3.6/site-packages/flask/templating.py", line 120, in _render
@@ -28,113 +26,42 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/home/sanya/microblog/app/templates/_post.html", line 4, in template
-    <a href="{{ url_for('user', username=post.author.username') }}">
+  File "/home/sanya/microblog/app/templates/base.html", line 38, in template
+    {% block content %}{% endblock %}
   File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1005, in render
     return concat(self.root_render_func(self.new_context(vars)))
-  File "/home/sanya/microblog/app/templates/index.html", line 1, in top-level template code
+  File "/home/sanya/microblog/app/templates/register.html", line 1, in top-level template code
     {% extends "base.html" %}
-  File "/home/sanya/microblog/app/templates/base.html", line 35, in top-level template code
-    {% block content %}{% endblock %}
-  File "/home/sanya/microblog/app/templates/index.html", line 17, in block "content"
-    {% include "_post.html" %}
   File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
     reraise(exc_type, exc_value, tb)
   File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/home/sanya/microblog/app/templates/_post.html", line 4, in template
-    <a href="{{ url_for('user', username=post.author.username') }}">
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/environment.py", line 497, in _parse
-    return Parser(self, source, name, encode_filename(filename)).parse()
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/parser.py", line 901, in parse
-    result = nodes.Template(self.subparse(), lineno=1)
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/parser.py", line 875, in subparse
-    add_data(self.parse_tuple(with_condexpr=True))
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/parser.py", line 620, in parse_tuple
-    args.append(parse())
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/parser.py", line 432, in parse_expression
-    return self.parse_condexpr()
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/parser.py", line 437, in parse_condexpr
-    expr1 = self.parse_or()
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/parser.py", line 450, in parse_or
-    left = self.parse_and()
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/parser.py", line 459, in parse_and
-    left = self.parse_not()
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/parser.py", line 470, in parse_not
-    return self.parse_compare()
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/parser.py", line 474, in parse_compare
-    expr = self.parse_math1()
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/parser.py", line 496, in parse_math1
-    left = self.parse_concat()
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/parser.py", line 507, in parse_concat
-    args = [self.parse_math2()]
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/parser.py", line 517, in parse_math2
-    left = self.parse_pow()
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/parser.py", line 528, in parse_pow
-    left = self.parse_unary()
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/parser.py", line 547, in parse_unary
-    node = self.parse_postfix(node)
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/parser.py", line 676, in parse_postfix
-    node = self.parse_call(node)
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/parser.py", line 785, in parse_call
-    value = self.parse_expression()
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/parser.py", line 432, in parse_expression
-    return self.parse_condexpr()
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/parser.py", line 437, in parse_condexpr
-    expr1 = self.parse_or()
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/parser.py", line 450, in parse_or
-    left = self.parse_and()
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/parser.py", line 459, in parse_and
-    left = self.parse_not()
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/parser.py", line 470, in parse_not
-    return self.parse_compare()
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/parser.py", line 474, in parse_compare
-    expr = self.parse_math1()
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/parser.py", line 496, in parse_math1
-    left = self.parse_concat()
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/parser.py", line 507, in parse_concat
-    args = [self.parse_math2()]
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/parser.py", line 517, in parse_math2
-    left = self.parse_pow()
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/parser.py", line 528, in parse_pow
-    left = self.parse_unary()
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/parser.py", line 547, in parse_unary
-    node = self.parse_postfix(node)
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/parser.py", line 672, in parse_postfix
-    node = self.parse_subscript(node)
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/parser.py", line 700, in parse_subscript
-    next(self.stream)
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/lexer.py", line 359, in __next__
-    self.current = next(self._iter)
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/lexer.py", line 562, in wrap
-    for lineno, token, value in stream:
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/lexer.py", line 739, in tokeniter
-    name, filename)
-jinja2.exceptions.TemplateSyntaxError: unexpected char "'" at 112
-2019-07-30 07:59:34,733 INFO: Microblog startup [in /home/sanya/microblog/app/__init__.py:46]
-2019-07-30 08:08:38,191 INFO: Microblog startup [in /home/sanya/microblog/app/__init__.py:46]
-2019-07-30 08:08:41,777 ERROR: Exception on /index [GET] [in /home/sanya/microblog/venv/lib/python3.6/site-packages/flask/app.py:1891]
-Traceback (most recent call last):
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/sanya/microblog/app/routes.py", line 28, in index
-    posts = current_user.followed_posts().query.order_by(Post.timestamp.desc())
-AttributeError: 'BaseQuery' object has no attribute 'query'
-2019-07-30 08:09:21,500 INFO: Microblog startup [in /home/sanya/microblog/app/__init__.py:46]
-2019-07-30 08:10:38,805 INFO: Microblog startup [in /home/sanya/microblog/app/__init__.py:46]
-2019-07-30 08:12:19,700 INFO: Microblog startup [in /home/sanya/microblog/app/__init__.py:46]
-2019-07-30 08:12:25,572 INFO: Microblog startup [in /home/sanya/microblog/app/__init__.py:46]
-2019-07-30 08:18:33,438 INFO: Microblog startup [in /home/sanya/microblog/app/__init__.py:46]
-2019-07-30 08:31:01,137 INFO: Microblog startup [in /home/sanya/microblog/app/__init__.py:46]
+  File "/home/sanya/microblog/app/templates/base.html", line 38, in template
+    {% block content %}{% endblock %}
+  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/environment.py", line 543, in _generate
+    optimized=self.optimized)
+  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/compiler.py", line 82, in generate
+    generator.visit(node)
+  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/visitor.py", line 38, in visit
+    return f(node, *args, **kwargs)
+  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/compiler.py", line 718, in visit_Template
+    self.fail('block %r defined twice' % block.name, block.lineno)
+  File "/home/sanya/microblog/venv/lib/python3.6/site-packages/jinja2/compiler.py", line 315, in fail
+    raise TemplateAssertionError(msg, lineno, self.name, self.filename)
+jinja2.exceptions.TemplateAssertionError: block 'content' defined twice
+2019-07-30 14:09:47,561 INFO: Microblog startup [in /home/sanya/microblog/app/__init__.py:49]
+2019-07-30 14:18:50,326 INFO: Microblog startup [in /home/sanya/microblog/app/__init__.py:49]
+2019-07-30 14:23:47,040 INFO: Microblog startup [in /home/sanya/microblog/app/__init__.py:49]
+2019-07-30 14:27:10,320 INFO: Microblog startup [in /home/sanya/microblog/app/__init__.py:49]
+2019-07-30 14:38:05,832 INFO: Microblog startup [in /home/sanya/microblog/app/__init__.py:49]
+2019-07-30 14:38:49,718 INFO: Microblog startup [in /home/sanya/microblog/app/__init__.py:49]
+2019-07-30 14:39:43,627 INFO: Microblog startup [in /home/sanya/microblog/app/__init__.py:49]
+2019-07-30 14:41:07,450 INFO: Microblog startup [in /home/sanya/microblog/app/__init__.py:49]
+2019-07-30 15:00:37,727 INFO: Microblog startup [in /home/sanya/microblog/app/__init__.py:49]
+2019-07-30 15:01:58,340 INFO: Microblog startup [in /home/sanya/microblog/app/__init__.py:49]
+2019-07-30 15:03:10,025 INFO: Microblog startup [in /home/sanya/microblog/app/__init__.py:49]
+2019-07-30 15:04:14,196 INFO: Microblog startup [in /home/sanya/microblog/app/__init__.py:49]
+2019-07-30 15:08:53,314 INFO: Microblog startup [in /home/sanya/microblog/app/__init__.py:49]
+2019-07-30 15:11:48,216 INFO: Microblog startup [in /home/sanya/microblog/app/__init__.py:49]
+2019-07-30 21:44:41,573 INFO: Microblog startup [in /home/sanya/microblog/app/__init__.py:49]
+2019-07-31 01:24:01,221 INFO: Microblog startup [in /home/sanya/microblog/app/__init__.py:51]
